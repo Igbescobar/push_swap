@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "string_view": "c",
+    "cstdlib": "c",
+    "functional": "c"
+  },
+  "makefile.configureOnOpen": false
+}
