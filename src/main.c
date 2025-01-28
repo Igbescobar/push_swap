@@ -6,7 +6,7 @@
 /*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:01:30 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/24 15:07:12 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/01/28 11:46:37 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,15 @@ void	init_stack(t_list **stack, int argc, char **argv)
 		i++;
 	}
 	index_stack(stack);
-	ft_free(args);
+	// ft_free(args);
+}
+
+void	sort_stack(t_list **stack_a, t_list **stack_b)
+{
+	if (ft_lstsize(stack_a) <= 5)
+		simple_sort(stack_a, stack_b);
+	else
+		radix_sort(stack_a, stack_b);
 }
 int	main(int argc, char **argv)
 {
@@ -60,18 +68,15 @@ int	main(int argc, char **argv)
 	*stack_a = NULL;
 	*stack_b = NULL;
 	init_stack(stack_a, argc, argv);
-	print_stack(*stack_a);
 	if (is_sorted(stack_a))
 	{
-		free_stack(stack_a);
-		free_stack(stack_b);
+		// free_stack(stack_a);
+		// free_stack(stack_b);
 		return (0);
 	}
-	// if (ft_lstsize(stack_a) <= 5)
-	//	simple_sort(&stack_a, &stack_b);
-	// else
-	//	radix_sort(&stack_a, &stack_b);
-	// free_stack(&stack_a);
-	// free_stack(&stack_b);
+	sort_stack(stack_a, stack_b);
+	// free_stack(stack_a);
+	// free_stack(stack_b);
+	print_stack(*stack_a);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:50:44 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/24 14:35:46 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/01/27 13:03:34 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,25 @@ void	ft_lstadd_back(t_list **stack, t_list *new)
 
 t_list	*ft_lstlast(t_list *head)
 {
-	t_list *last;
+	t_list	*last;
 
 	last = head;
 	while (last->next)
 		last = last->next;
 	return (last);
+}
+
+int	ft_lstsize(t_list **stack)
+{
+	int i;
+	t_list *tmp;
+
+	i = 0;
+	tmp = *stack;
+	while (tmp)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	return (i);
 }

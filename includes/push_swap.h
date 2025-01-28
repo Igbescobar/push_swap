@@ -6,13 +6,14 @@
 /*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:58:31 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/24 15:04:35 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/01/28 11:10:41 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <fcntl.h>
 # include <limits.h>
 # include <stddef.h>
 # include <stdio.h>
@@ -33,7 +34,7 @@ t_list				*ft_lstlast(t_list *head);
 void				ft_lstadd_front(t_list **stack, t_list *new);
 void				ft_lstadd_back(t_list **stack, t_list *new);
 void				printList(t_list *head);
-int					ft_lstsize(t_list *head);
+int					ft_lstsize(t_list **head);
 char				**ft_split(char const *s, char c);
 long				ft_atoi(const char *str);
 int					ft_isnum(char *num);
@@ -46,8 +47,9 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_error(char *msg);
 void				ft_check_args(int argc, char **argv);
 int					is_sorted(t_list **stack);
-int					get_distance(t_list **stack, int index);
+int					find_distance(t_list **stack, int index);
 void				make_top(t_list **stack, int distance);
+int					get_min_index(t_list **stack_a, int val);
 void				free_stack(t_list **stack);
 void				ft_free(char **str);
 

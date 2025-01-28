@@ -6,7 +6,7 @@
 /*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 16:47:28 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/24 15:05:26 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/01/28 11:07:46 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_check_args(int argc, char **argv)
 	while (args[i])
 	{
 		tmp = ft_atoi(args[i]);
-		if (ft_isnum(args[i]) == 0)
+		if (!ft_isnum(args[i]))
 			ft_error("Error: Invalid argument");
 		if (ft_contains(tmp, args, i))
 			ft_error("Error: Duplicate argument");
@@ -62,6 +62,6 @@ void	ft_check_args(int argc, char **argv)
 			ft_error("Error: Number out of range");
 		i++;
 	}
-	if (argc == 2)
-		ft_free(args);
+	// if (argc == 2)
+	//	ft_free(args);
 }
