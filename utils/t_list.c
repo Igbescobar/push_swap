@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_list.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:50:44 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/29 12:05:05 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:06:51 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ t_list	*ft_lstlast(t_list *head)
 	return (last);
 }
 
-int	ft_lstsize(t_list **stack)
+int	stack_size(t_list **stack)
 {
-	int i;
-	t_list *tmp;
+	int		i;
+	t_list	*tmp;
 
 	i = 0;
 	tmp = *stack;

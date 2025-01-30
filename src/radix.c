@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   radix.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 14:47:41 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/29 12:23:16 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:32:56 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	radix_sort(t_list **stack_a, t_list **stack_b)
 	t_list	*head;
 
 	head = *stack_a;
-	stack_length = ft_lstsize(stack_a);
+	stack_length = stack_size(stack_a);
 	max_bits = get_max_bits(stack_a);
 	i = 0;
 	while (i < max_bits)
@@ -55,7 +55,7 @@ void	radix_sort(t_list **stack_a, t_list **stack_b)
 			else
 				pb(stack_a, stack_b);
 		}
-		while (ft_lstsize(stack_b) != 0)
+		while (stack_size(stack_b) != 0)
 			pa(stack_a, stack_b);
 		i++;
 	}

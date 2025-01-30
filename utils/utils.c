@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 15:07:41 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/29 10:29:50 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:25:08 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_sorted(t_list **stack_a)
+int	sorted_stack_checker(t_list **stack)
 {
 	t_list	*head;
 
-	head = *stack_a;
+	head = *stack;
 	while (head->next)
 	{
 		if (head->value > head->next->value)
@@ -45,8 +45,8 @@ int	find_distance(t_list **stack_a, int index)
 
 void	free_stack(t_list **stack)
 {
-	t_list *head;
-	t_list *tmp;
+	t_list	*head;
+	t_list	*tmp;
 
 	head = *stack;
 	while (head)

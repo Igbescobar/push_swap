@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:33:38 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/29 11:45:25 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/01/30 10:54:29 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ra(t_list **stack_a)
 
 int	rra(t_list **stack_a)
 {
-	if (!reverseRotate(stack_a))
+	if (!reverse_rotate(stack_a))
 		return (-1);
 	ft_putendl_fd("rra", 1);
 	return (0);

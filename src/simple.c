@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:25:46 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/29 11:43:59 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:30:13 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,15 @@
 
 void	sort_3(t_list **stack_a)
 {
-	t_list	*head;
-	int		min;
-	int		next_min;
+	int	max_index;
 
-	head = *stack_a;
-	min = get_min_index(stack_a, -1);
-	next_min = get_min_index(stack_a, min);
-	if (is_sorted(stack_a))
-		return ;
-	if (head->index == min && head->next->index != next_min)
-	{
+	max_index = find_largest_index(*stack_a);
+	if ((*stack_a)->index == max_index)
 		ra(stack_a);
-		sa(stack_a);
+	else if ((*stack_a)->next->index == max_index)
 		rra(stack_a);
-	}
-	else if (head->index == next_min)
-	{
-		if (head->next->index == min)
-			sa(stack_a);
-		else
-			rra(stack_a);
-	}
-	else
-	{
-		if (head->next->index == min)
-			ra(stack_a);
-		else
-		{
-			sa(stack_a);
-			rra(stack_a);
-		}
-	}
+	if ((*stack_a)->index > (*stack_a)->next->index)
+		sa(stack_a);
 }
 
 void	sort_4(t_list **stack_a, t_list **stack_b)
@@ -62,7 +39,7 @@ void	sort_4(t_list **stack_a, t_list **stack_b)
 	}
 	else if (distance == 3)
 		rra(stack_a);
-	if (is_sorted(stack_a))
+	if (sorted_stack_checker(stack_a))
 		return ;
 	pb(stack_a, stack_b);
 	sort_3(stack_a);
@@ -88,7 +65,7 @@ void	sort_5(t_list **stack_a, t_list **stack_b)
 	}
 	if (distance == 4)
 		rra(stack_a);
-	if (is_sorted(stack_a))
+	if (sorted_stack_checker(stack_a))
 		return ;
 	pb(stack_a, stack_b);
 	sort_4(stack_a, stack_b);
@@ -97,10 +74,10 @@ void	sort_5(t_list **stack_a, t_list **stack_b)
 
 void	simple_sort(t_list **stack_a, t_list **stack_b)
 {
-	int size;
+	int	size;
 
-	size = ft_lstsize(stack_a);
-	if (is_sorted(stack_a) || size == 0 || size == 1)
+	size = stack_size(stack_a);
+	if (sorted_stack_checker(stack_a) || size == 0 || size == 1)
 		return ;
 	if (size == 2)
 		sa(stack_a);

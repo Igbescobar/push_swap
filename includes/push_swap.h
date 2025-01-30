@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:58:31 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/29 11:37:00 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:29:46 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_list				*ft_lstnew(long value);
 t_list				*ft_lstlast(t_list *head);
 void				ft_lstadd_back(t_list **stack, t_list *new);
 void				print_stack(t_list *head);
-int					ft_lstsize(t_list **head);
+int					stack_size(t_list **head);
 char				**ft_split(char const *s, char c);
 long				ft_atoi(const char *str);
 int					ft_isnum(char *num);
@@ -44,10 +44,11 @@ void				ft_putstr_fd(const char *str, int fd);
 void				ft_putchar_fd(char c, int fd);
 
 void				ft_error(char *msg);
-void				ft_check_args(int argc, char **argv);
-int					is_sorted(t_list **stack);
+void				check_args(int argc, char **argv);
+int					sorted_stack_checker(t_list **stack);
 int					find_distance(t_list **stack, int index);
 int					get_min_index(t_list **stack_a, int val);
+int					find_largest_index(t_list *stack);
 void				free_stack(t_list **stack);
 void				ft_free(char **str);
 
@@ -61,7 +62,7 @@ void				sort_5(t_list **stack_a, t_list **stack_b);
 int					swap(t_list **stack);
 int					push(t_list **stack_to, t_list **stack_from);
 int					rotate(t_list **stack);
-int					reverseRotate(t_list **stack);
+int					reverse_rotate(t_list **stack);
 
 int					sa(t_list **stack_a);
 int					sb(t_list **stack_b);

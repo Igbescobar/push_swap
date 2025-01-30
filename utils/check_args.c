@@ -3,14 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 16:47:28 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/30 10:17:01 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:27:36 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}
+
+int	ft_contains(int tmp, char **args, int i)
+{
+	i++;
+	while (args[i])
+	{
+		if (ft_atoi(args[i]) == tmp)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	ft_isnum(char *num)
+{
+	int	i;
+
+	i = 0;
+	if (num[0] == '-')
+		i++;
+	while (num[i])
+	{
+		if (!ft_isdigit(num[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 long	ft_atoi(const char *str)
 {
@@ -37,11 +70,11 @@ long	ft_atoi(const char *str)
 	return (number * sign);
 }
 
-void	ft_check_args(int argc, char **argv)
+void	check_args(int argc, char **argv)
 {
-	int i;
-	long tmp;
-	char **args;
+	int		i;
+	long	tmp;
+	char	**args;
 
 	i = 0;
 	if (argc == 2)

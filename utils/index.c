@@ -6,7 +6,7 @@
 /*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:46:32 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/24 15:03:43 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:32:19 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static t_list	*get_next_min(t_list **stack)
 
 void	index_stack(t_list **stack)
 {
-	t_list *head;
-	int index;
+	t_list	*head;
+	int		index;
 
 	index = 0;
 	head = get_next_min(stack);
@@ -45,4 +45,18 @@ void	index_stack(t_list **stack)
 		head->index = index++;
 		head = get_next_min(stack);
 	}
+}
+
+int	find_largest_index(t_list *stack)
+{
+	int	index;
+
+	index = stack->index;
+	while (stack)
+	{
+		if (stack->index > index)
+			index = stack->next->index;
+		stack = stack->next;
+	}
+	return (index);
 }

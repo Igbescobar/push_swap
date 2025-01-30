@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:01:30 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/29 12:27:31 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:47:04 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,18 @@ void	init_stack(t_list **stack, int argc, char **argv)
 		i++;
 	}
 	index_stack(stack);
-	// ft_free(args);
+	if (argc == 2)
+		free(args);
 }
 
 void	sort_stack(t_list **stack_a, t_list **stack_b)
 {
-	if (ft_lstsize(stack_a) <= 5)
+	if (stack_size(stack_a) <= 5)
 		simple_sort(stack_a, stack_b);
 	else
 		radix_sort(stack_a, stack_b);
 }
+
 int	main(int argc, char **argv)
 {
 	t_list	**stack_a;
@@ -50,13 +52,13 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (-1);
-	ft_check_args(argc, argv);
+	check_args(argc, argv);
 	stack_a = (t_list **)malloc(sizeof(t_list *));
 	stack_b = (t_list **)malloc(sizeof(t_list *));
 	*stack_a = NULL;
 	*stack_b = NULL;
 	init_stack(stack_a, argc, argv);
-	if (is_sorted(stack_a))
+	if (sorted_stack_checker(stack_a))
 	{
 		free_stack(stack_a);
 		free_stack(stack_b);

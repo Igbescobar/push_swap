@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations_simple.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:45:29 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/29 12:00:56 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:28:54 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	swap(t_list **stack_a)
 	t_list	*first;
 	t_list	*second;
 
-	if (!stack_a || ft_lstsize(stack_a) < 2)
+	if (!stack_a || stack_size(stack_a) < 2)
 		return (-1);
 	first = *stack_a;
 	second = first->next;
@@ -50,7 +50,7 @@ int	rotate(t_list **stack)
 	t_list	*head;
 	t_list	*tail;
 
-	if (ft_lstsize(stack) < 2)
+	if (stack_size(stack) < 2)
 		return (-1);
 	head = *stack;
 	tail = ft_lstlast(head);
@@ -60,12 +60,12 @@ int	rotate(t_list **stack)
 	return (1);
 }
 
-int	reverseRotate(t_list **stack)
+int	reverse_rotate(t_list **stack)
 {
 	t_list	*head;
 	t_list	*tail;
 
-	if (ft_lstsize(stack) < 2)
+	if (stack_size(stack) < 2)
 		return (-1);
 	head = *stack;
 	tail = ft_lstlast(head);
@@ -85,11 +85,11 @@ int	reverseRotate(t_list **stack)
 
 int	push(t_list **stack_to, t_list **stack_from)
 {
-	t_list *tmp;
-	t_list *head_to;
-	t_list *head_from;
+	t_list	*tmp;
+	t_list	*head_to;
+	t_list	*head_from;
 
-	if (ft_lstsize(stack_from) == 0)
+	if (stack_size(stack_from) == 0)
 		return (-1);
 	head_from = *stack_from;
 	head_to = *stack_to;
