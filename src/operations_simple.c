@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations_simple.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:45:29 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/28 11:21:42 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/01/29 12:00:56 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ int	get_min_index(t_list **stack_a, int val)
 	int		min;
 
 	head = *stack_a;
-	min = head->value;
+	min = head->index;
 	while (head->next)
 	{
-		if (head->next->index < min && head->next->index != val)
-			min = head->next->index;
 		head = head->next;
+		if ((head->index < min) && (head->index != val))
+			min = head->index;
 	}
 	return (min);
 }

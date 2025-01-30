@@ -3,20 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   simple.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:25:46 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/28 11:45:02 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/01/29 11:43:59 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static void	sort_3_helper(t_list **stack_a, int min, int next_min)
+void	sort_3(t_list **stack_a)
 {
 	t_list	*head;
+	int		min;
+	int		next_min;
 
 	head = *stack_a;
+	min = get_min_index(stack_a, -1);
+	next_min = get_min_index(stack_a, min);
+	if (is_sorted(stack_a))
+		return ;
 	if (head->index == min && head->next->index != next_min)
 	{
 		ra(stack_a);
@@ -30,21 +36,7 @@ static void	sort_3_helper(t_list **stack_a, int min, int next_min)
 		else
 			rra(stack_a);
 	}
-}
-
-static void	sort_3(t_list **stack_a)
-{
-	t_list	*head;
-	int		min;
-	int		next_min;
-
-	head = *stack_a;
-	min = get_min_index(stack_a, -1);
-	next_min = get_min_index(stack_a, min);
-	if (is_sorted(stack_a))
-		return ;
-	sort_3_helper(stack_a, min, next_min);
-	if (head->index != min && head->index != next_min)
+	else
 	{
 		if (head->next->index == min)
 			ra(stack_a);
@@ -107,7 +99,6 @@ void	simple_sort(t_list **stack_a, t_list **stack_b)
 {
 	int size;
 
-	(void)stack_b;
 	size = ft_lstsize(stack_a);
 	if (is_sorted(stack_a) || size == 0 || size == 1)
 		return ;

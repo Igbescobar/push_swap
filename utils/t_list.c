@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_list.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:50:44 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/27 13:03:34 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/01/29 12:05:05 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int	ft_lstsize(t_list **stack)
 	tmp = *stack;
 	while (tmp)
 	{
-		i++;
 		tmp = tmp->next;
+		i++;
 	}
 	return (i);
 }

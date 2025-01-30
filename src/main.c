@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:01:30 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/28 11:46:37 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/01/29 12:27:31 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_stack(t_list *stack)
-{
-	t_list	*current;
-
-	current = stack;
-	while (current)
-	{
-		printf("%d\n", current->value);
-		current = current->next;
-	}
-}
 
 void	init_stack(t_list **stack, int argc, char **argv)
 {
@@ -57,8 +45,8 @@ void	sort_stack(t_list **stack_a, t_list **stack_b)
 }
 int	main(int argc, char **argv)
 {
-	t_list **stack_a;
-	t_list **stack_b;
+	t_list	**stack_a;
+	t_list	**stack_b;
 
 	if (argc < 2)
 		return (-1);
@@ -70,13 +58,12 @@ int	main(int argc, char **argv)
 	init_stack(stack_a, argc, argv);
 	if (is_sorted(stack_a))
 	{
-		// free_stack(stack_a);
-		// free_stack(stack_b);
+		free_stack(stack_a);
+		free_stack(stack_b);
 		return (0);
 	}
 	sort_stack(stack_a, stack_b);
-	// free_stack(stack_a);
-	// free_stack(stack_b);
-	print_stack(*stack_a);
+	free_stack(stack_a);
+	free_stack(stack_b);
 	return (0);
 }

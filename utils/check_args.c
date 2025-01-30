@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 16:47:28 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/28 11:07:46 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/01/30 10:17:01 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ void	ft_check_args(int argc, char **argv)
 	{
 		tmp = ft_atoi(args[i]);
 		if (!ft_isnum(args[i]))
-			ft_error("Error: Invalid argument");
+			ft_error("Error");
 		if (ft_contains(tmp, args, i))
-			ft_error("Error: Duplicate argument");
+			ft_error("Error");
 		if (tmp < -2147483648 || tmp > 2147483647)
-			ft_error("Error: Number out of range");
+			ft_error("Error");
 		i++;
 	}
-	// if (argc == 2)
-	//	ft_free(args);
+	if (argc == 2)
+		ft_free(args);
 }

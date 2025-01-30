@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_args_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 16:50:05 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/28 11:21:03 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/01/30 10:30:15 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_error(char *msg)
 {
-	ft_putendl_fd(msg, 1);
+	ft_putendl_fd(msg, 2);
 	exit(0);
 }
 
