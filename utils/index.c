@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:46:32 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/30 12:32:19 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/01/31 11:07:19 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ void	index_stack(t_list **stack)
 
 int	find_largest_index(t_list *stack)
 {
-	int	index;
+	int	largest_index;
 
-	index = stack->index;
+	largest_index = stack->index;
 	while (stack)
 	{
-		if (stack->index > index)
-			index = stack->next->index;
+		if (stack->index > largest_index)
+			largest_index = stack->index;
 		stack = stack->next;
 	}
-	return (index);
+	return (largest_index);
 }

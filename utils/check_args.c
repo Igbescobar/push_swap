@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 16:47:28 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/30 12:27:36 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/01/31 12:03:03 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,26 +72,27 @@ long	ft_atoi(const char *str)
 
 void	check_args(int argc, char **argv)
 {
-	int		i;
 	long	tmp;
 	char	**args;
+	int		i;
 
-	i = 0;
 	if (argc == 2)
+	{
+		if (argv[1][0] == '\0' || argv[1][0] == '-')
+			ft_error("Error");
 		args = ft_split(argv[1], ' ');
+		i = 0;
+	}
 	else
 	{
-		i = 1;
 		args = argv;
+		i = 1;
 	}
 	while (args[i])
 	{
 		tmp = ft_atoi(args[i]);
-		if (!ft_isnum(args[i]))
-			ft_error("Error");
-		if (ft_contains(tmp, args, i))
-			ft_error("Error");
-		if (tmp < -2147483648 || tmp > 2147483647)
+		if (!ft_isnum(args[i]) || ft_contains(tmp, args, i) || tmp < -2147483648
+			|| tmp > 2147483647)
 			ft_error("Error");
 		i++;
 	}
