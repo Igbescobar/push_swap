@@ -6,7 +6,7 @@
 /*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:50:44 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/30 11:06:51 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/02/07 19:07:29 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ t_list	*ft_lstnew(long content)
 	if (!new)
 		return (NULL);
 	new->value = content;
-	new->index = -1;
+	new->index = 0;
+	new->pos = -1;
+	new->target_pos = -1;
+	new->cost_a = -1;
+	new->cost_b = -1;
 	new->next = NULL;
 	return (new);
 }
@@ -50,16 +54,14 @@ t_list	*ft_lstlast(t_list *head)
 	return (last);
 }
 
-int	stack_size(t_list **stack)
+int	get_stack_size(t_list *stack)
 {
-	int		i;
-	t_list	*tmp;
+	int	i;
 
 	i = 0;
-	tmp = *stack;
-	while (tmp)
+	while (stack)
 	{
-		tmp = tmp->next;
+		stack = stack->next;
 		i++;
 	}
 	return (i);

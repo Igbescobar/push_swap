@@ -3,18 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 16:47:28 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/31 12:03:03 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/02/09 09:38:57 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_isdigit(int c)
+static int	ft_isnum(char *num)
 {
-	return (c >= '0' && c <= '9');
+	int		i;
+	long	val;
+
+	i = 0;
+	if (is_sign(num[i]) && num[i + 1] != '\0')
+		i++;
+	while (num[i] && is_digit(num[i]))
+		i++;
+	if (num[i] != '\0' && !is_digit(num[i]))
+		return (0);
+	val = ft_atoi(num);
+	if (val > INT_MAX || val < INT_MIN)
+		return (0);
+	return (1);
 }
 
 int	ft_contains(int tmp, char **args, int i)
@@ -28,59 +41,37 @@ int	ft_contains(int tmp, char **args, int i)
 	}
 	return (0);
 }
-
-int	ft_isnum(char *num)
+static int	validate_args(char **args, int start, int argc)
 {
-	int	i;
+	long	tmp;
+	int		i;
 
-	i = 0;
-	if (num[0] == '-')
-		i++;
-	while (num[i])
+	(void)argc;
+	i = start;
+	while (args[i])
 	{
-		if (!ft_isdigit(num[i]))
+		tmp = ft_atoi(args[i]);
+		if (!ft_isnum(args[i]) || ft_contains(tmp, args, i) || tmp < INT_MIN
+			|| tmp > INT_MAX)
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-long	ft_atoi(const char *str)
+int	check_args(int argc, char **argv)
 {
-	long	i;
-	long	number;
-	int		sign;
-
-	i = 0;
-	number = 0;
-	sign = 1;
-	while (str[i] && (str[i] == 32 || (str[i] >= 9 && str[i] <= 13)))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		number = (number * 10) + (str[i] - '0');
-		i++;
-	}
-	return (number * sign);
-}
-
-void	check_args(int argc, char **argv)
-{
-	long	tmp;
 	char	**args;
 	int		i;
+	int		valid;
 
 	if (argc == 2)
 	{
 		if (argv[1][0] == '\0' || argv[1][0] == '-')
-			ft_error("Error");
+			return (0);
 		args = ft_split(argv[1], ' ');
+		if (!args)
+			return (0);
 		i = 0;
 	}
 	else
@@ -88,14 +79,8 @@ void	check_args(int argc, char **argv)
 		args = argv;
 		i = 1;
 	}
-	while (args[i])
-	{
-		tmp = ft_atoi(args[i]);
-		if (!ft_isnum(args[i]) || ft_contains(tmp, args, i) || tmp < -2147483648
-			|| tmp > 2147483647)
-			ft_error("Error");
-		i++;
-	}
+	valid = validate_args(args, i, argc);
 	if (argc == 2)
-		ft_free(args);
+		free_split(args);
+	return (valid);
 }

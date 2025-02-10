@@ -1,29 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations_simple.c                                :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/27 10:45:29 by igngonza          #+#    #+#             */
-/*   Updated: 2025/02/06 18:19:39 by igngonza         ###   ########.fr       */
+/*   Created: 2025/02/06 17:37:47 by igngonza          #+#    #+#             */
+/*   Updated: 2025/02/06 17:38:36 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_min_index(t_list **stack_a, int val)
+static void	rotate(t_list **stack)
 {
-	t_list	*head;
-	int		min;
+	t_list	*tmp;
+	t_list	*tail;
 
-	head = *stack_a;
-	min = head->index;
-	while (head->next)
-	{
-		head = head->next;
-		if ((head->index < min) && (head->index != val))
-			min = head->index;
-	}
-	return (min);
+	tmp = *stack;
+	*stack = (*stack)->next;
+	tail = get_stack_bottom(*stack);
+	tmp->next = NULL;
+	tail->next = tmp;
+}
+
+void	ra(t_list **stack_a)
+{
+	rotate(stack_a);
+	ft_putstr("ra\n");
+}
+
+void	rb(t_list **stack_b)
+{
+	rotate(stack_b);
+	ft_putstr("rb\n");
+}
+
+void	rr(t_list **stack_a, t_list **stack_b)
+{
+	rotate(stack_a);
+	rotate(stack_b);
+	ft_putstr("rr\n");
 }

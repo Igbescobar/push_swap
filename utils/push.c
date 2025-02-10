@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations_simple.c                                :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/27 10:45:29 by igngonza          #+#    #+#             */
-/*   Updated: 2025/02/06 18:19:39 by igngonza         ###   ########.fr       */
+/*   Created: 2025/02/06 18:15:57 by igngonza          #+#    #+#             */
+/*   Updated: 2025/02/06 18:16:39 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_min_index(t_list **stack_a, int val)
+static void	push(t_list **src, t_list **dest)
 {
-	t_list	*head;
-	int		min;
+	t_list	*tmp;
 
-	head = *stack_a;
-	min = head->index;
-	while (head->next)
-	{
-		head = head->next;
-		if ((head->index < min) && (head->index != val))
-			min = head->index;
-	}
-	return (min);
+	if (*src == NULL)
+		return ;
+	tmp = (*src)->next;
+	(*src)->next = *dest;
+	*dest = *src;
+	*src = tmp;
+}
+
+void	pa(t_list **stack_a, t_list **stack_b)
+{
+	push(stack_b, stack_a);
+	ft_putstr("pa\n");
+}
+
+void	pb(t_list **stack_a, t_list **stack_b)
+{
+	push(stack_a, stack_b);
+	ft_putstr("pb\n");
 }

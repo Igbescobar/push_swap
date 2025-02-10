@@ -6,7 +6,7 @@
 /*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:58:31 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/30 12:29:46 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/02/08 11:05:14 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,55 +25,70 @@ typedef struct s_list
 {
 	int				value;
 	int				index;
+	int				pos;
+	int				target_pos;
+	int				cost_a;
+	int				cost_b;
 	struct s_list	*next;
 }					t_list;
 
-// Util functions
+/* Initialization */
+void				init_stack(t_list **stack, int argc, char **argv);
+void				index_stack(t_list *stack, int stack_size);
+
+/* Algorithms */
+int					sorted_stack_checker(t_list **stack);
+void				tiny_sort(t_list **stack);
+void				sort(t_list **stack_a, t_list **stack_b);
+
+/* Position */
+int					get_lowest_index_position(t_list **stack);
+void				get_target_position(t_list **stack_a, t_list **stack_b);
+
+/* Cost */
+void				get_cost(t_list **stack_a, t_list **stack_b);
+void				do_cheapest_move(t_list **stack_a, t_list **stack_b);
+
+/* Calculate Move */
+void				do_move(t_list **a, t_list **b, int cost_a, int cost_b);
+
+/* Stack Functions */
+t_list				*get_stack_bottom(t_list *stack);
+t_list				*get_stack_before_bottom(t_list *stack);
+void				ft_lstadd_back(t_list **stack, t_list *new);
+int					get_stack_size(t_list *head);
 t_list				*ft_lstnew(long value);
 t_list				*ft_lstlast(t_list *head);
-void				ft_lstadd_back(t_list **stack, t_list *new);
-void				print_stack(t_list *head);
-int					stack_size(t_list **head);
+
+/* Input Check */
+int					check_args(int argc, char **argv);
+int					is_digit(int c);
+int					nbstr_cmp(const char *s1, const char *s2);
+int					is_sign(char c);
+void				free_split(char **strs);
+
+/* Utils */
 char				**ft_split(char const *s, char c);
 long				ft_atoi(const char *str);
-int					ft_isnum(char *num);
-int					ft_contains(int tmp, char **args, int i);
-int					ft_isdigit(int c);
-void				ft_putendl_fd(char *str, int fd);
-void				ft_putstr_fd(const char *str, int fd);
-void				ft_putchar_fd(char c, int fd);
-
-void				ft_error(char *msg);
-void				check_args(int argc, char **argv);
-int					sorted_stack_checker(t_list **stack);
-int					find_distance(t_list **stack, int index);
-int					get_min_index(t_list **stack_a, int val);
-int					find_largest_index(t_list *stack);
+void				ft_putstr(char *str);
 void				free_stack(t_list **stack);
 void				ft_free(char **str);
-
-// Algorithm utils
-void				radix_sort(t_list **stack_a, t_list **stack_b);
-void				simple_sort(t_list **stack_a, t_list **stack_b);
-void				index_stack(t_list **stack);
-void				sort_5(t_list **stack_a, t_list **stack_b);
+int					nb_abs(int nb);
 
 // Instruction functions
-int					swap(t_list **stack);
-int					push(t_list **stack_to, t_list **stack_from);
-int					rotate(t_list **stack);
-int					reverse_rotate(t_list **stack);
+void				pa(t_list **stack_a, t_list **stack_b);
+void				pb(t_list **stack_a, t_list **stack_b);
+void				sa(t_list **stack_a);
+void				sb(t_list **stack_b);
+void				ss(t_list **stack_a, t_list **stack_b);
+void				ra(t_list **stack_a);
+void				rb(t_list **stack_b);
+void				rr(t_list **stack_a, t_list **stack_b);
+void				rra(t_list **stack_a);
+void				rrb(t_list **stack_b);
+void				rrr(t_list **stack_a, t_list **stack_b);
 
-int					sa(t_list **stack_a);
-int					sb(t_list **stack_b);
-int					ss(t_list **stack_a, t_list **stack_b);
-int					pa(t_list **stack_a, t_list **stack_b);
-int					pb(t_list **stack_a, t_list **stack_b);
-int					ra(t_list **stack_a);
-int					rb(t_list **stack_b);
-int					rr(t_list **stack_a, t_list **stack_b);
-int					rra(t_list **stack_a);
-int					rrb(t_list **stack_b);
-int					rrr(t_list **stack_a, t_list **stack_b);
+/* Error */
+void				exit_error(t_list **stack_a, t_list **stack_b);
 
 #endif

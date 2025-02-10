@@ -6,11 +6,26 @@
 /*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:35:06 by igngonza          #+#    #+#             */
-/*   Updated: 2025/01/24 15:05:38 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/02/09 10:41:52 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	free_split(char **strs)
+{
+	int	i;
+
+	i = 0;
+	if (!strs)
+		return ;
+	while (strs[i])
+	{
+		free(strs[i]);
+		i++;
+	}
+	free(strs);
+}
 
 int	word_count(char const *s, char c)
 {
@@ -65,7 +80,12 @@ char	**splitter(char const *s, char c, char **strs, int wcount)
 		wlen = word_length(s, c);
 		strs[i] = (char *)malloc(sizeof(char) * (wlen + 1));
 		if (!(strs[i]))
+		{
+			while (i > 0)
+				free(strs[--i]);
+			free(strs);
 			return (NULL);
+		}
 		while (j < wlen)
 		{
 			strs[i][j] = *s;
@@ -81,14 +101,29 @@ char	**ft_split(char const *s, char c)
 {
 	int		wcount;
 	char	**strs;
+	int		i;
 
 	if (!s)
 		return (NULL);
 	wcount = word_count(s, c);
 	strs = (char **)malloc(sizeof(char *) * (wcount + 1));
-	if (!(strs))
+	if (!strs)
+	{
 		return (NULL);
+	}
 	strs = splitter(s, c, strs, wcount);
+	if (!strs)
+	{
+		i = 0;
+		while (i < wcount)
+		{
+			if (strs[i])
+				free(strs[i]);
+			i++;
+		}
+		free(strs);
+		return (NULL);
+	}
 	strs[wcount] = NULL;
 	return (strs);
 }
