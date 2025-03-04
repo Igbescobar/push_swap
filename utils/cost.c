@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cost.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 17:28:20 by igngonza          #+#    #+#             */
-/*   Updated: 2025/02/06 19:56:33 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/03/04 19:26:40 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void	get_cost(t_list **stack_a, t_list **stack_b)
 
 void	do_cheapest_move(t_list **stack_a, t_list **stack_b)
 {
-	t_list *tmp;
-	int cheapest;
-	int cost_a;
-	int cost_b;
+	t_list	*tmp;
+	int		cheapest;
+	int		cost_a;
+	int		cost_b;
 
 	tmp = *stack_b;
 	cheapest = INT_MAX;

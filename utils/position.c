@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   position.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 07:50:19 by igngonza          #+#    #+#             */
-/*   Updated: 2025/02/06 07:51:22 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/03/04 19:25:35 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ static int	get_target(t_list **a, int b_idx, int target_idx, int target_pos)
 
 void	get_target_position(t_list **a, t_list **b)
 {
-	t_list *tmp_b;
-	int target_pos;
+	t_list	*tmp_b;
+	int		target_pos;
 
 	tmp_b = *b;
 	get_position(a);

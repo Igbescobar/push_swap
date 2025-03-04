@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 16:47:28 by igngonza          #+#    #+#             */
-/*   Updated: 2025/02/09 09:38:57 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/03/04 19:26:59 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	ft_contains(int tmp, char **args, int i)
 	}
 	return (0);
 }
+
 static int	validate_args(char **args, int start, int argc)
 {
 	long	tmp;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:35:06 by igngonza          #+#    #+#             */
-/*   Updated: 2025/02/09 10:41:52 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/03/04 19:31:01 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,30 +69,25 @@ char	**splitter(char const *s, char c, char **strs, int wcount)
 	int	j;
 	int	wlen;
 
-	while (*s == c)
-		s++;
-	i = -1;
-	while (++i < wcount)
+	i = 0;
+	while (i < wcount)
 	{
 		while (*s == c)
 			s++;
-		j = 0;
 		wlen = word_length(s, c);
 		strs[i] = (char *)malloc(sizeof(char) * (wlen + 1));
-		if (!(strs[i]))
+		if (!strs[i])
 		{
 			while (i > 0)
 				free(strs[--i]);
 			free(strs);
 			return (NULL);
 		}
+		j = 0;
 		while (j < wlen)
-		{
-			strs[i][j] = *s;
-			s++;
-			j++;
-		}
+			strs[i][j++] = *s++;
 		strs[i][j] = '\0';
+		i++;
 	}
 	return (strs);
 }
@@ -108,9 +103,7 @@ char	**ft_split(char const *s, char c)
 	wcount = word_count(s, c);
 	strs = (char **)malloc(sizeof(char *) * (wcount + 1));
 	if (!strs)
-	{
 		return (NULL);
-	}
 	strs = splitter(s, c, strs, wcount);
 	if (!strs)
 	{
