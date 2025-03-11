@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 15:07:41 by igngonza          #+#    #+#             */
-/*   Updated: 2025/03/04 19:25:58 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:04:49 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	free_stack(t_list **stack)
 	free(stack);
 }
 
-int	nb_abs(int nb)
+int	abs(int nb)
 {
 	if (nb < 0)
 		return (nb * -1);

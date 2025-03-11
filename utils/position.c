@@ -3,53 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   position.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 07:50:19 by igngonza          #+#    #+#             */
-/*   Updated: 2025/03/04 19:25:35 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/03/11 12:46:47 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	get_position(t_list **stack)
+static void	assign_positions(t_list **stack)
 {
-	t_list	*tmp;
-	int		i;
+	t_list	*current;
+	int		position;
 
-	tmp = *stack;
-	i = 0;
-	while (tmp)
+	current = *stack;
+	position = 0;
+	while (current)
 	{
-		tmp->pos = i;
-		tmp = tmp->next;
-		i++;
+		current->pos = position;
+		current = current->next;
+		position++;
 	}
 }
 
-int	get_lowest_index_position(t_list **stack)
+int	find_lowest_index_position(t_list **stack)
 {
-	t_list	*tmp;
+	t_list	*current;
 	int		lowest_index;
 	int		lowest_pos;
 
-	tmp = *stack;
-	lowest_index = INT_MAX;
-	get_position(stack);
-	lowest_pos = tmp->pos;
-	while (tmp)
+	current = *stack;
+	lowest_index = 2147483647;
+	assign_positions(stack);
+	lowest_pos = current->pos;
+	while (current)
 	{
-		if (tmp->index < lowest_index)
+		if (current->index < lowest_index)
 		{
-			lowest_index = tmp->index;
-			lowest_pos = tmp->pos;
+			lowest_index = current->index;
+			lowest_pos = current->pos;
 		}
-		tmp = tmp->next;
+		current = current->next;
 	}
 	return (lowest_pos);
 }
 
-static int	get_target(t_list **a, int b_idx, int target_idx, int target_pos)
+static int	find_target_position(t_list **a, int b_idx, int target_idx,
+		int target_pos)
 {
 	t_list	*tmp_a;
 
@@ -63,7 +64,7 @@ static int	get_target(t_list **a, int b_idx, int target_idx, int target_pos)
 		}
 		tmp_a = tmp_a->next;
 	}
-	if (target_idx != INT_MAX)
+	if (target_idx != 2147483647)
 		return (target_pos);
 	tmp_a = *a;
 	while (tmp_a)
@@ -78,19 +79,20 @@ static int	get_target(t_list **a, int b_idx, int target_idx, int target_pos)
 	return (target_pos);
 }
 
-void	get_target_position(t_list **a, t_list **b)
+void	assign_target_positions(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*tmp_b;
+	t_list	*current_b;
 	int		target_pos;
 
-	tmp_b = *b;
-	get_position(a);
-	get_position(b);
+	current_b = *stack_b;
+	assign_positions(stack_a);
+	assign_positions(stack_b);
 	target_pos = 0;
-	while (tmp_b)
+	while (current_b)
 	{
-		target_pos = get_target(a, tmp_b->index, INT_MAX, target_pos);
-		tmp_b->target_pos = target_pos;
-		tmp_b = tmp_b->next;
+		target_pos = find_target_position(stack_a, current_b->index, 2147483647,
+				target_pos);
+		current_b->target_pos = target_pos;
+		current_b = current_b->next;
 	}
 }

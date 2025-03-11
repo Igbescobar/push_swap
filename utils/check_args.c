@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igngonza <igngonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 16:47:28 by igngonza          #+#    #+#             */
-/*   Updated: 2025/03/04 19:26:59 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/03/11 11:25:50 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_isnum(char *num)
 	if (num[i] != '\0' && !is_digit(num[i]))
 		return (0);
 	val = ft_atoi(num);
-	if (val > INT_MAX || val < INT_MIN)
+	if (val > 2147483647 || val < -2147483648)
 		return (0);
 	return (1);
 }
@@ -42,18 +42,17 @@ int	ft_contains(int tmp, char **args, int i)
 	return (0);
 }
 
-static int	validate_args(char **args, int start, int argc)
+static int	validate_args(char **args, int start)
 {
 	long	tmp;
 	int		i;
 
-	(void)argc;
 	i = start;
 	while (args[i])
 	{
 		tmp = ft_atoi(args[i]);
-		if (!ft_isnum(args[i]) || ft_contains(tmp, args, i) || tmp < INT_MIN
-			|| tmp > INT_MAX)
+		if (!ft_isnum(args[i]) || ft_contains(tmp, args, i) || tmp < -2147483648
+			|| tmp > 2147483647)
 			return (0);
 		i++;
 	}
@@ -68,7 +67,7 @@ int	check_args(int argc, char **argv)
 
 	if (argc == 2)
 	{
-		if (argv[1][0] == '\0' || argv[1][0] == '-')
+		if (argv[1][0] == '\0')
 			return (0);
 		args = ft_split(argv[1], ' ');
 		if (!args)
@@ -80,7 +79,7 @@ int	check_args(int argc, char **argv)
 		args = argv;
 		i = 1;
 	}
-	valid = validate_args(args, i, argc);
+	valid = validate_args(args, i);
 	if (argc == 2)
 		free_split(args);
 	return (valid);
