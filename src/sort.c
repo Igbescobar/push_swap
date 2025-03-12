@@ -6,7 +6,7 @@
 /*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 14:47:41 by igngonza          #+#    #+#             */
-/*   Updated: 2025/03/11 15:07:22 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/03/12 11:06:39 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	push_all_save_three(t_list **stack_a, t_list **stack_b)
 	half_stack_size = stack_size / 2;
 	pushed = 0;
 	i = 0;
-	while (stack_size > 6 && i < stack_size && pushed < half_stack_size)
+	while (i < stack_size && pushed < half_stack_size)
 	{
 		if ((*stack_a)->index <= half_stack_size)
 		{

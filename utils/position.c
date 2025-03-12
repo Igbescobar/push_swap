@@ -6,7 +6,7 @@
 /*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 07:50:19 by igngonza          #+#    #+#             */
-/*   Updated: 2025/03/11 12:46:47 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/03/12 11:20:50 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,29 +52,29 @@ int	find_lowest_index_position(t_list **stack)
 static int	find_target_position(t_list **a, int b_idx, int target_idx,
 		int target_pos)
 {
-	t_list	*tmp_a;
+	t_list	*current_a;
 
-	tmp_a = *a;
-	while (tmp_a)
+	current_a = *a;
+	while (current_a)
 	{
-		if (tmp_a->index > b_idx && tmp_a->index < target_idx)
+		if (current_a->index > b_idx && current_a->index < target_idx)
 		{
-			target_idx = tmp_a->index;
-			target_pos = tmp_a->pos;
+			target_idx = current_a->index;
+			target_pos = current_a->pos;
 		}
-		tmp_a = tmp_a->next;
+		current_a = current_a->next;
 	}
 	if (target_idx != 2147483647)
 		return (target_pos);
-	tmp_a = *a;
-	while (tmp_a)
+	current_a = *a;
+	while (current_a)
 	{
-		if (tmp_a->index < target_idx)
+		if (current_a->index < target_idx)
 		{
-			target_idx = tmp_a->index;
-			target_pos = tmp_a->pos;
+			target_idx = current_a->index;
+			target_pos = current_a->pos;
 		}
-		tmp_a = tmp_a->next;
+		current_a = current_a->next;
 	}
 	return (target_pos);
 }
