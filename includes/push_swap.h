@@ -6,16 +6,13 @@
 /*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:58:31 by igngonza          #+#    #+#             */
-/*   Updated: 2025/03/11 15:04:39 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/03/13 11:58:30 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <fcntl.h>
-# include <stddef.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 

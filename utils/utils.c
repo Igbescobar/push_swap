@@ -6,7 +6,7 @@
 /*   By: igngonza <igngonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 15:07:41 by igngonza          #+#    #+#             */
-/*   Updated: 2025/03/11 15:04:49 by igngonza         ###   ########.fr       */
+/*   Updated: 2025/03/13 09:42:47 by igngonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	free_stack(t_list **stack)
 		free(*stack);
 		*stack = tmp;
 	}
-	free(stack);
+	stack = NULL;
 }
 
 int	abs(int nb)

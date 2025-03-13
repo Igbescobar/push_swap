@@ -7,10 +7,8 @@ UTILS_PATH = utils
 OBJ_PATH = obj
 
 SRCS =  $(wildcard $(SRC_PATH)/*.c) $(wildcard $(UTILS_PATH)/*.c)
-CHECK_SRCS = $(wildcard $(UTILS_PATH)/*.c) $(SRC_PATH)/instructions.c checker.c
 
 OBJS = $(patsubst %.c, $(OBJ_PATH)/%.o, $(notdir $(SRCS)))
-CHECK_OBJS = $(patsubst %.c, $(OBJ_PATH)/%.o, $(notdir $(CHECK_SRCS)))
 
 all: $(OBJ_PATH) $(NAME)
 
